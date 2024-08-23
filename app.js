@@ -15,6 +15,23 @@ app.set('layout', 'layout/main');
 // Middlewares
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+// API
+app.use('/api', express.json());
+app.use('/api', (req, res, next) => {
+    const apiPath = req.path.slice(1); // Remove leading slash after /api/
+    const apiFilePath = path.join(__dirname, 'api', `${apiPath}.js`);
+
+    console.log(`Requested API path: /${apiFilePath}`);
+
+    if (!fs.existsSync(apiFilePath)) {
+        console.log(`404: /api/${apiPath} not found`);
+        return res.status(404).send('API endpoint not found');
+    }
+
+    const handler = require(apiFilePath);
+    return handler(req, res, next);
+});
+
 // Routes
 app.get('/debug', (req, res) => {
     res.send('Hello World!');
