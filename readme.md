@@ -10,11 +10,11 @@ The main difference between the LAMP stack and LAMP-JS is that LAMP-JS uses .ejs
 For example: `http://localhost:3000/hello` loads `views/hello/index.ejs`.
 
 For example, try the following paths:
-* `http://localhost:3000` (loads `views/index.ejs`)
-* `http://localhost:3000/about.ejs` (loads `views/about.ejs`)
-* `http://localhost:3000/hello` (loads `views/hello/index.ejs`)
-* `http://localhost:3000/hello/friend.ejs` (loads `views/hello/friend.ejs`)
-* `http://localhost:3000/hello/world` (loads `views/hello/world/index.ejs`)
+* http://localhost:3000 (loads `views/index.ejs`)
+* http://localhost:3000/about.ejs (loads `views/about.ejs`)
+* http://localhost:3000/hello (loads `views/hello/index.ejs`)
+* http://localhost:3000/hello/friend.ejs (loads `views/hello/friend.ejs`)
+* http://localhost:3000/hello/world (loads `views/hello/world/index.ejs`)
 
 ## 2. Run any backend code within the `<% %>` tags in the .ejs files. For example:
 
