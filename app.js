@@ -9,8 +9,8 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express();
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
+app.set('views', path.join(__dirname, 'pages'));
 app.set('layout', 'layout/main');
-// app.set('views', path.join(__dirname, 'views'));
 
 // Middlewares
 app.use('/public', express.static(path.join(__dirname, 'public')));
@@ -39,7 +39,7 @@ app.get('/debug', (req, res) => {
 
 app.get('/*', async (req, res, next) => {
     const requestedPath = req.path.slice(1); // Remove leading slash
-    let viewPath = path.join(__dirname, 'views', requestedPath);
+    let viewPath = path.join(__dirname, 'pages', requestedPath);
 
     console.log(`Requested path: /${requestedPath}`);
 
@@ -58,7 +58,7 @@ app.get('/*', async (req, res, next) => {
         viewPath = path.join(viewPath, 'index');
         if (fs.existsSync(`${viewPath}.ejs`)) {
             console.log(`Found: ${requestedPath}/index.ejs`);
-            return res.render(viewPath.replace(`${__dirname}/views/`, ''));
+            return res.render(viewPath.replace(`${__dirname}/pages/`, ''));
         }
     }
 

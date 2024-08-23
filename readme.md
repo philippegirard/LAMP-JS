@@ -4,17 +4,17 @@ LAMP-JS is a framework for anyone who love the of the LAMP stack, but want to us
 
 # Features
 
-## 1. Simply add files to the `views` folder and they will be served as web pages.
+## 1. Simply add files to the `pages` folder and they will be served as web pages.
 
 The main difference between the LAMP stack and LAMP-JS is that LAMP-JS uses .ejs file extensions instead of .php file extensions. 
-For example: `http://localhost:3000/hello` loads `views/hello/index.ejs`.
+For example: `http://localhost:3000/hello` loads `pages/hello/index.ejs`.
 
 For example, try the following paths:
-* http://localhost:3000 (loads `views/index.ejs`)
-* http://localhost:3000/about.ejs (loads `views/about.ejs`)
-* http://localhost:3000/hello (loads `views/hello/index.ejs`)
-* http://localhost:3000/hello/friend.ejs (loads `views/hello/friend.ejs`)
-* http://localhost:3000/hello/world (loads `views/hello/world/index.ejs`)
+* http://localhost:3000 (loads `pages/index.ejs`)
+* http://localhost:3000/about.ejs (loads `pages/about.ejs`)
+* http://localhost:3000/hello (loads `pages/hello/index.ejs`)
+* http://localhost:3000/hello/friend.ejs (loads `pages/hello/friend.ejs`)
+* http://localhost:3000/hello/world (loads `pages/hello/world/index.ejs`)
 
 ## 2. Run any backend code within the `<% %>` tags in the .ejs files. For example:
 
@@ -30,13 +30,13 @@ const currentTime = new Date().toLocaleTimeString();
 ## 3. Partials
 
 You can import a `.ejs` file into another `.ejs` file using the `include` function.
-For example, if you have a `footer.ejs` file in the `views/partials` folder, you can include it in the `index.ejs` file like this:
+For example, if you have a `footer.ejs` file in the `pages/partials` folder, you can include it in the `index.ejs` file like this:
 
 ```ejs
 <%- include('partials/footer.ejs') %>
 ```
 
-Note: partials paths are relative, so if you're in the `views/hello` folder and you want to include a partial from the `views/partials` folder, you can do it like this:
+Note: partials paths are relative, so if you're in the `pages/hello` folder and you want to include a partial from the `pages/partials` folder, you can do it like this:
 
 ```ejs
 <%- include('../partials/footer.ejs') %>
