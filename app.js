@@ -3,10 +3,13 @@ const express = require('express');
 var path = require('path');
 require('dotenv').config();
 const fs = require('fs');
+const expressLayouts = require('express-ejs-layouts');
 
 // Config
 const app = express();
 app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.set('layout', 'layout/main');
 
 // Middlewares
 app.use('/public', express.static(path.join(__dirname, 'public')));
