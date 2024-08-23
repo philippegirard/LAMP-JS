@@ -5,17 +5,22 @@ require('dotenv').config();
 
 // Config
 const app = express();
-const port = process.env.PORT || 3000;
+app.set('view engine', 'ejs');
 
 // Middlewares
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.get('/', (req, res) => {
+app.get('/debug', (req, res) => {
     res.send('Hello World!');
 });
 
+app.get('/', async (req, res) => {
+    res.render('index');
+});
+
 // Start
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`App is running at http://localhost:${port}`);
 });
