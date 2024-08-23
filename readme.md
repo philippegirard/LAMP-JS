@@ -47,7 +47,7 @@ Note: partials paths are relative, so if you're in the `views/hello` folder and 
 
 All files in the `/public` are served as static files. 
 You can access them by going to `http://localhost:3000/public/<filename>`. 
-For example, if you have a file called `hello.txt` in the `/public` folder, you can access it by going to `http://localhost:3000/public/hello.txt`.
+For example, if you have a file called `hello.txt` in the `/public` folder, you can access it by going to http://localhost:3000/public/hello.txt.
 
 # Getting Started
 
