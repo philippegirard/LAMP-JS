@@ -10,11 +10,11 @@ npm run dev
 LAMP-JS works like the LAMP stack, but with .ejs files instead of .php files.
 
 For example, try the following paths:
-* `http://localhost:3001` (loads `views/index.ejs`)
-* `http://localhost:3001/about.ejs` (loads `views/about.ejs`) 
-* `http://localhost:3001/hello` (loads `views/hello/index.ejs`)
-* `http://localhost:3001/hello/friend.ejs` (loads `views/hello/friend.ejs`)
-* `http://localhost:3001/hello/world` (loads `views/hello/world/index.ejs`)
+* `http://localhost:3000` (loads `views/index.ejs`)
+* `http://localhost:3000/about.ejs` (loads `views/about.ejs`) 
+* `http://localhost:3000/hello` (loads `views/hello/index.ejs`)
+* `http://localhost:3000/hello/friend.ejs` (loads `views/hello/friend.ejs`)
+* `http://localhost:3000/hello/world` (loads `views/hello/world/index.ejs`)
 
 # Static Files
 
