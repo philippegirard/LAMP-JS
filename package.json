@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
+    "predev": "bash bin/predev.sh",
     "dev": "docker-compose up -d && nodemon app.js"
   },
   "dependencies": {
