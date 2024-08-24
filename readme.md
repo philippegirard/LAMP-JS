@@ -49,15 +49,29 @@ All files in the `/public` are served as static files.
 You can access them by going to `http://localhost:3000/public/<filename>`. 
 For example, if you have a file called `hello.txt` in the `/public` folder, you can access it by going to http://localhost:3000/public/hello.txt.
 
-# Getting Started
+# Installation
 
-## Start the server (Development)
+1. Clone the repository
 
+```sh
+git clone https://github.com/philippegirard/LAMPJS.git
+OR
+git clone git@github.com:philippegirard/LAMPJS.git
 ```
+
+2. Install the dependencies
+
+```sh
+npm install
+```
+
+3. Run the server
+
+```sh
 npm run dev
 ```
 
-## Deploy
+# Deploy
 
 ```
 npm run start
