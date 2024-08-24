@@ -4,5 +4,5 @@ result = await postgres.query('SELECT version()');
 postgresVersion = result.rows[0].version;
 %>
 
-<h2>PostgreSQL Version</h2>
-<p><%= postgresVersion %></p>
+<h2>PostgreSQL Connected Successfully!</h2>
+<p>Version: <%= postgresVersion %></p>
