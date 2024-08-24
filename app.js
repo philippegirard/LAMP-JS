@@ -76,14 +76,15 @@ app.use((req, res) => {
 
 
 const StartServer = async () => {
-    // Open Clients
+    // Import Clients
     const mongo = require('./clients/mongo');
     const postgres = require('./clients/postgres');
 
+    // Open Clients
     await mongo.open();
     await postgres.open();
 
-    // Start
+    // Start Server
     const port = process.env.PORT || 3000;
     const server = app.listen(port, () => {
         console.log(`App is running at http://localhost:${port}`);
@@ -109,7 +110,7 @@ const StartServer = async () => {
         }, 10000);
     };
 
-    // Listen for both SIGTERM and SIGINT
+    // Listen for both SIGTERM (system terminated) and SIGINT (ctrl+c)
     process.on('SIGTERM', shutdown);
     process.on('SIGINT', shutdown);
 }
