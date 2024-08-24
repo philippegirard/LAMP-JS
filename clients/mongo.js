@@ -1,10 +1,10 @@
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 
 // MongoDB connection URI
 const uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
 
 // Database name
-const dbName = process.env.MONGO_DB_NAME || 'mydatabase';
+const dbName = process.env.MONGO_DB_NAME || 'lampjs';
 
 // Create a new MongoClient
 let client;
@@ -15,7 +15,7 @@ async function open() {
     });
 
     // Connect to the MongoDB cluster
-    console.log("connecting to mongo...")
+    console.log("connecting to mongo...");
     await client.connect();
     console.log('Connected successfully to MongoDB');
 
