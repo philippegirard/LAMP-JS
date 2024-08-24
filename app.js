@@ -77,8 +77,11 @@ app.use((req, res) => {
 
 const StartServer = async () => {
     // Open Clients
-    const mongo = require('./clients/mongo'); // Import the Mongo connection functions
+    const mongo = require('./clients/mongo');
+    const postgres = require('./clients/postgres');
+
     await mongo.open();
+    await postgres.open();
 
     // Start
     const port = process.env.PORT || 3000;
