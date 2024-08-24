@@ -85,8 +85,32 @@ const StartServer = async () => {
 
     // Start
     const port = process.env.PORT || 3000;
-    app.listen(port, () => {
+    const server = app.listen(port, () => {
         console.log(`App is running at http://localhost:${port}`);
     });
+
+
+     // Handle shutdown gracefully
+     const shutdown = () => {
+        console.log('Starting graceful shutdown...');
+
+        server.close(() => {
+            console.log('Express server closed.');
+            mongo.close();
+            postgres.close();
+            console.log('All clients closed.');
+            process.exit(0);
+        });
+
+        // Force close after 10 seconds
+        setTimeout(() => {
+            console.error('Could not close connections in time, forcefully shutting down');
+            process.exit(1);
+        }, 10000);
+    };
+
+    // Listen for both SIGTERM and SIGINT
+    process.on('SIGTERM', shutdown);
+    process.on('SIGINT', shutdown);
 }
 StartServer()
