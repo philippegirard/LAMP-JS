@@ -4,6 +4,7 @@ var path = require('path');
 require('dotenv').config();
 const fs = require('fs');
 const expressLayouts = require('express-ejs-layouts');
+const mongo = require("./clients/mongo");
 
 // Config
 const app = express();
@@ -73,8 +74,16 @@ app.use((req, res) => {
     res.status(404).send('Page not found');
 });
 
-// Start
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`App is running at http://localhost:${port}`);
-});
+
+const StartServer = async () => {
+    // Open Clients
+    const mongo = require('./clients/mongo'); // Import the Mongo connection functions
+    await mongo.open();
+
+    // Start
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        console.log(`App is running at http://localhost:${port}`);
+    });
+}
+StartServer()

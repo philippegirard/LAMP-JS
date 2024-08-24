@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "docker-compose up -d && nodemon app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,7 +13,8 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-ejs-layouts": "^2.5.1",
-    "http-errors": "~1.6.3"
+    "http-errors": "~1.6.3",
+    "mongodb": "^6.8.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
