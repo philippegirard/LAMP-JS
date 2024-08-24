@@ -1,0 +1,9 @@
+<%
+const randomName = `User_${Math.floor(Math.random() * 1000)}`;
+await mongo.collection('users').insertOne({ name: randomName });
+%>
+
+<h2>User Created</h2>
+<p>A new user with the name "<%= randomName %>" has been created.</p>
+
+<p><a href="/users/index.ejs">View all users</a></p>

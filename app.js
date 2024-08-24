@@ -10,8 +10,13 @@ const ejs = require('ejs');
 
 // Config
 const app = express();
-app.engine('ejs', (filePath, options, callback) => {
-    ejs.renderFile(filePath, { ...options, async: true }, callback);
+app.engine('ejs', async (filePath, options, callback) => {
+    try {
+        const rendered = await ejs.renderFile(filePath, { ...options, async: true });
+        callback(null, rendered);
+    } catch (err) {
+        callback(err);
+    }
 }); // Enable Async EJS
 app.set('view engine', 'ejs');
 app.use(expressLayouts);

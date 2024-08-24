@@ -2,12 +2,23 @@
 let users = [];
 
 users = await mongo.collection('users').find().toArray();
+
+// Get MongoDB version
+adminDb = mongo.admin();
+serverStatus = await adminDb.serverStatus();
+mongoVersion = serverStatus.version;
+
+// Get PostgreSQL version
+result = await postgres.query('SELECT version()');
+postgresVersion = result.rows[0].version;
+
 %>
 
 
 /index.ejs
-<% for (let i = 0; i < 3; i++) { %>
-  <div>
-    <p>This is div number <%= i + 1 %></p>
-  </div>
-<% } %>
+
+<h2>PostgreSQL Version</h2>
+<p><%= postgresVersion %></p>
+
+<h2>MongoDB Version</h2>
+<p><%= mongoVersion %></p>

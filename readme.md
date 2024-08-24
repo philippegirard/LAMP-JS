@@ -33,13 +33,13 @@ You can import a `.ejs` file into another `.ejs` file using the `include` functi
 For example, if you have a `footer.ejs` file in the `pages/partials` folder, you can include it in the `index.ejs` file like this:
 
 ```ejs
-<%- include('partials/footer.ejs') %>
+<%- await include('partials/footer.ejs') %>
 ```
 
 Note: partials paths are relative, so if you're in the `pages/hello` folder and you want to include a partial from the `pages/partials` folder, you can do it like this:
 
 ```ejs
-<%- include('../partials/footer.ejs') %>
+<%- await include('../partials/footer.ejs') %>
 ```
     
 

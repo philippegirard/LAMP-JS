@@ -1,0 +1,16 @@
+<%
+const users = await mongo.collection('users').find().toArray();
+%>
+
+<h2>User List</h2>
+<% if (users.length > 0) { %>
+    <ul>
+    <% for (const user of users) { %>
+        <li><%= user.name %></li>
+    <% } %>
+    </ul>
+<% } else { %>
+    <p>No users found.</p>
+<% } %>
+
+<p><a href="/users/create.ejs">Create a new user</a></p>
