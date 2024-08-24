@@ -25,8 +25,12 @@ async function close() {
   }
 }
 
+function getClient() {
+    return client;
+}
+
 module.exports = {
   open,
+  getClient,
   close,
-  client,
 };

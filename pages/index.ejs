@@ -1,3 +1,10 @@
+<%
+let users = [];
+
+users = await mongo.collection('users').find().toArray();
+%>
+
+
 /index.ejs
 <% for (let i = 0; i < 3; i++) { %>
   <div>

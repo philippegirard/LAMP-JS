@@ -6,33 +6,39 @@ const uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
 // Database name
 const dbName = process.env.MONGO_DB_NAME || 'lampjs';
 
-// Create a new MongoClient
+// Internal variables
+let connection;
 let client;
 
 async function open() {
-    client = new MongoClient(uri, {
+    connection = new MongoClient(uri, {
         serverSelectionTimeoutMS: 1000,
     });
 
     // Connect to the MongoDB cluster
     console.log("connecting to mongo...");
-    await client.connect();
+    await connection.connect();
     console.log('Connected successfully to MongoDB');
 
     // Return the database connection
-    return client.db(dbName);
+    client = connection.db(dbName);
+    return client;
 }
 
 // Function to close the connection
 async function close() {
-    if (client) {
-        await client.close();
+    if (connection) {
+        await connection.close();
         console.log('MongoDB connection closed');
     }
 }
 
+function getClient() {
+    return client;
+}
+
 module.exports = {
     open,
-    client,
+    getClient,
     close,
 };

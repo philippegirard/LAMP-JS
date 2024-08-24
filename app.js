@@ -5,9 +5,14 @@ require('dotenv').config();
 const fs = require('fs');
 const expressLayouts = require('express-ejs-layouts');
 const mongo = require("./clients/mongo");
+const postgres = require("./clients/postgres");
+const ejs = require('ejs');
 
 // Config
 const app = express();
+app.engine('ejs', (filePath, options, callback) => {
+    ejs.renderFile(filePath, { ...options, async: true }, callback);
+}); // Enable Async EJS
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('views', path.join(__dirname, 'pages'));
@@ -34,11 +39,11 @@ app.use('/api', (req, res, next) => {
 });
 
 // Routes
-app.get('/debug', (req, res) => {
-    res.send('Hello World!');
-});
-
 app.get('/*', async (req, res, next) => {
+    // Make clients available to ejs templates
+    app.locals.mongo = mongo.getClient();
+    app.locals.postgres = postgres.getClient();
+
     const requestedPath = req.path.slice(1); // Remove leading slash
     let viewPath = path.join(__dirname, 'pages', requestedPath);
 
@@ -76,10 +81,6 @@ app.use((req, res) => {
 
 
 const StartServer = async () => {
-    // Import Clients
-    const mongo = require('./clients/mongo');
-    const postgres = require('./clients/postgres');
-
     // Open Clients
     await mongo.open();
     await postgres.open();
@@ -91,8 +92,8 @@ const StartServer = async () => {
     });
 
 
-     // Handle shutdown gracefully
-     const shutdown = () => {
+    // Handle shutdown gracefully
+    const shutdown = () => {
         console.log('Starting graceful shutdown...');
 
         server.close(() => {
