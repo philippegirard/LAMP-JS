@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAMP-JS</title>
     <link rel="stylesheet" href="/public/global.css">
 </head>
+
 <body>
-<header>
-    <h1>HEADER</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about.ejs">About</a>
-        <a href="/hello">Hello</a>
-        <a href="/hello/friend.ejs">Hello Friend</a>
-        <a href="/hello/world">Hello World</a>
-        <a href="/users/">Users</a>
-    </nav>
-</header>
+    <header>
+        <h1>HEADER</h1>
+        <nav>
+            <a href="/">Return to Home</a>
+        </nav>
+    </header>
 
-<main>
-    <%- body %>
-</main>
+    <main>
+        <%- body %>
+    </main>
 
-<%- await include('../partials/footer.ejs') %>
+    <%- await include('../partials/footer.ejs') %>
 
 </body>
+
 </html>

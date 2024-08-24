@@ -1,24 +1,13 @@
-<%
-let users = [];
+<h2>Test Navigation</h1>
+  <%- await include('partials/test_nav.ejs') %>
 
-users = await mongo.collection('users').find().toArray();
+    <h2>Test JavaScript Functions</h1>
+      <ul>
+        <li><a href="/time.ejs">Get Current Time</a></li>
+      </ul>
 
-// Get MongoDB version
-adminDb = mongo.admin();
-serverStatus = await adminDb.serverStatus();
-mongoVersion = serverStatus.version;
-
-// Get PostgreSQL version
-result = await postgres.query('SELECT version()');
-postgresVersion = result.rows[0].version;
-
-%>
-
-
-/index.ejs
-
-<h2>PostgreSQL Version</h2>
-<p><%= postgresVersion %></p>
-
-<h2>MongoDB Version</h2>
-<p><%= mongoVersion %></p>
+      <h2>Test Clients</h2>
+      <ul>
+        <li><a href="/clients/mongo.ejs">Mongo</a></li>
+        <li><a href="/clients/postgres.ejs">Postgres</a></li>
+      </ul>

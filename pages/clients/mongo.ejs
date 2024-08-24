@@ -1,0 +1,9 @@
+<%
+// Get MongoDB version
+adminDb = mongo.admin();
+serverStatus = await adminDb.serverStatus();
+mongoVersion = serverStatus.version;
+%>
+
+<h2>MongoDB Version</h2>
+<p><%= mongoVersion %></p>
