@@ -1,28 +1,31 @@
 const { Pool } = require('pg');
 
+// PostgreSQL connection URI
 const connectionString = process.env.POSTGRES_URL;
 
-// Create a new Pool instance
+// Internal variables
+let poolConnection;
 let client;
 
 async function open() {
-  client = new Pool({
-    connectionString,
-  });
+    poolConnection = new Pool({
+        connectionString,
+    });
 
-  console.log("Connecting to PostgreSQL...");
-  const conn = await client.connect();
-  console.log('Connected successfully to PostgreSQL');
-  conn.release();
-  return client;
+    // Connect to the PostgreSQL cluster
+    console.log("Connecting to PostgreSQL...");
+    client = await poolConnection.connect();
+    console.log('Connected successfully to PostgreSQL');
+
+    return client;
 }
 
 // Function to close the connection
 async function close() {
-  if (client) {
-    await client.end();
-    console.log('PostgreSQL connection closed');
-  }
+    if (poolConnection) {
+        await poolConnection.end();
+        console.log('PostgreSQL connection closed');
+    }
 }
 
 function getClient() {
@@ -30,7 +33,7 @@ function getClient() {
 }
 
 module.exports = {
-  open,
-  getClient,
-  close,
+    open,
+    getClient,
+    close,
 };
