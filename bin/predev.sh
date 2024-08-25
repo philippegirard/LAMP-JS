@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stop all docker containers (uncomment if needed)
+# docker stop $(docker ps -q)
+
 # Navigate to the project root directory
 cd "$(dirname "$0")/.."
 

@@ -1,9 +1,6 @@
-version: '3.8'
-
 services:
   mongo:
     image: mongo:latest
-    container_name: mongo
     ports:
       - "17017:27017"
     environment:
@@ -12,7 +9,6 @@ services:
 
   postgres:
     image: postgres:latest
-    container_name: postgres
     ports:
       - "15432:5432"
     environment:
