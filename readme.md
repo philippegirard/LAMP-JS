@@ -54,9 +54,9 @@ For example, if you have a file called `hello.txt` in the `/public` folder, you 
 1. Clone the repository
 
 ```sh
-git clone https://github.com/philippegirard/LAMPJS.git
+git clone https://github.com/philippegirard/LAMP-JS.git
 OR
-git clone git@github.com:philippegirard/LAMPJS.git
+git clone git@github.com:philippegirard/LAMP-JS.git
 ```
 
 2. Install the dependencies
