@@ -51,13 +51,16 @@ For example, if you have a file called `hello.txt` in the `/public` folder, you 
 
 # Installation
 
-1. Clone the repository
+Method 1: 
 
-```sh
-git clone https://github.com/philippegirard/LAMP-JS.git
-OR
-git clone git@github.com:philippegirard/LAMP-JS.git
-```
+1. Use the repository as a template
+
+Open https://github.com/philippegirard/LAMP-JS
+
+Click on the "Use this template -> create new repository" button
+
+<img src="doc/installation.png" >
+
 
 2. Install the dependencies
 
